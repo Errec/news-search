@@ -7,7 +7,18 @@ html(lang="en")
     title
     meta(name="description" content="")
     link(rel="stylesheet" href="css/main.min.css")
-    //[if lt IE 9]> <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script><script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script> <![endif]
 
   body
-    h1 Hello World!
+    header.header
+      include templates/header.pug
+    main.main
+      section.search-bar
+        include templates/search-bar.pug
+      section.order-by
+        include templates/order-by.pug
+      section.results-count
+        include templates/results-count.pug
+      section.result-cards
+        include templates/result-cards.pug
+
+    script(src="js/bundle.min.js")
