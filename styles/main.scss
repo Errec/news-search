@@ -11,8 +11,9 @@ html, body
   padding: 0
   background-color: #ffffff
 
-p, h1, h2, h3, ul, li, form, input, select
+p, h1, h2, h3, ul, li, form, input, select, option
   padding: 0
   margin: 0
 
 @import 'modules/header.sass'
+@import 'modules/main.sass'

@@ -1,0 +1,79 @@
+select, input, button
+  background-color: transparent
+  outline: none
+  border: none
+
+.search-bar
+  outline: 1px solid #e6e6e6
+  background-color: #fafafa
+  border-radius: $radius
+  overflow: hidden
+  height: 40px
+  width: 100%
+
+.search-bar__wrapper, .search-form
+  width: 100%
+  height: 100%
+
+.search-bar__input-wrapper
+  vertical-align: middle
+  display: inline-block
+  width: 560px
+  height: 100%
+
+.search-bar__iput-field-wrapper
+  vertical-align: middle
+  display: inline-block
+  width: 410px
+  height: 100%
+
+.search-bar__search-icon
+  vertical-align: middle
+  display: inline-block
+  width: 40px
+  height: 40px
+  background:
+    image: url(../img/search-bar/search-icon.png)
+    size: 40%
+    repeat: no-repeat
+    position: center
+
+.search-bar__input-form
+  color: $brownish-grey
+  vertical-align: middle
+  display: inline-block
+  width: 370px
+  height: 100%
+
+.search-bar__select
+  appearance: none
+  padding-left: 4px
+  color: $brownish-grey
+  border-left: 1px solid #e6e6e6
+  vertical-align: middle
+  display: inline-block
+  width: 150px
+  height: 100%
+  background:
+    image: url(../img/search-bar/arrow-down.svg)
+    repeat: no-repeat
+    position: 90% center
+  &:focus
+    font-weight: bold
+    background-color: white
+    outline: none
+    background:
+      image: url(../img/search-bar/arrow-up.svg)
+
+.search-bar__option
+  color: $brownish-grey
+
+.search-bar__submit-btn
+  cursor: pointer
+  vertical-align: middle
+  display: inline-block
+  width: 115px
+  height: 100%
+  color: white
+  background:
+    color: $AzulDA

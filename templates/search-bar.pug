@@ -1,11 +1,11 @@
 div.search-bar__wrapper
   form.search-form
     div.search-bar__input-wrapper
-      div.search-bar__iput-wrapper
-        img.search-bar__search-icon(src='')
+      div.search-bar__iput-field-wrapper
+        div.search-bar__search-icon
         input.search-bar__input-form(type="text")
       select.search-bar__select.select
-        option(value='all' selected="selected") Todas
-        option(value='news') Noticias(0)
-        option(value='photos') Fotos(0)
-    button.submit-btn(type='submit') Pesquisar
+        option.search-bar__option(value='all' selected="selected") Todas
+        option.search-bar__option(value='news') Noticias(0)
+        option.search-bar__option(value='photos') Fotos(0)
+    button.search-bar__submit-btn(type='submit') Pesquisar
