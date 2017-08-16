@@ -1,5 +1,52 @@
 .result-cards__wrapper
+  color: $brownish-grey
   display: inline-block
   vertical-align: top
-  width: $maxWidth - 100px
-  padding-left: $defaultSpacing
+  margin-left: $defaultSpacing
+
+.result-cards__card
+  width: $cardWidth
+  height: $cardHeight
+  border-bottom: 1px solid $white
+  padding-bottom: $defaultSpacing
+  margin-bottom: $defaultSpacing
+
+.result-cards__thumbnail-wrapper
+  display: inline-block
+  vertical-align: top
+  width: 215px
+  height: 144px
+
+.result-cards__thumbnail
+  object-fit: cover
+
+.result-cards__text-wrapper
+  height: 144px
+  position: relative
+  margin-left: $defaultSpacing
+  display: inline-block
+  vertical-align: top
+
+.result-cards__title
+  margin-bottom: 4px
+  width: 320px;
+  font-size: 20px;
+  font-weight: bold;
+
+.result-cards__lide
+  margin-bottom: 4px
+  width: 320px;
+
+.result-cards__publish-time
+  font-size: 10px
+  position: absolute
+  left: 0
+  bottom: 0
+
+.no-picture
+  .result-cards__text-wrapper
+    margin-left: 0
+    .result-cards__title, .result-cards__lide
+      width: 100%
+  .result-cards__thumbnail-wrapper
+    display: none
