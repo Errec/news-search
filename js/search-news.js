@@ -3,6 +3,7 @@ var searchNews = (function() {
   var submitBtn            = document.querySelector('.search-bar__submit-btn');
   var inputForm            = document.querySelector('.search-bar__input-form');
   var categorySelected     = document.querySelector('.search-bar__select');
+  var orderSelected        = document.querySelector('.order-by__select');
   var categoryOptionNews   = document.querySelector('.search-bar__option-news');
   var categoryOptionPhotos = document.querySelector('.search-bar__option-photos');
   var newsList             = document.querySelector('.result-cards__wrapper');
@@ -12,16 +13,16 @@ var searchNews = (function() {
   var URL = 'https://gist.githubusercontent.com/Errec/ed44de4fdac5916cb45c2ca89f5524af/raw/519a4a3ca8213da9047312a3842a8e23640d6955/news.json';
   // Add the event listeners
   submitBtn.addEventListener('click', function (e) {
-    return _newSearch(e, inputForm.value, categorySelected.value);
+    return _newSearch(e, inputForm.value, categorySelected.value, orderSelected.value);
   });
 
-  function _newSearch(event, term, category) {
+  function _newSearch(event, term, category, order) {
     event.preventDefault();
     if(term) { // if the input search term is not a blank one
       newsArr = []; // reset previous search cache
       _removeAllCards(); // clear the card list to render a new one
       requestData(URL, "GET").then(function(data) {
-        return _renderNewsData(data, term, category);
+        return _renderNewsData(data, term, category, order);
       }, errorHandler);
     }
   }
@@ -32,11 +33,11 @@ var searchNews = (function() {
     }
   }
 
-  function _renderNewsData(data, term, category) {
+  function _renderNewsData(data, term, category, order) {
     _storeResults(data, term);
     _renderCategorySelector();
     _renderResultsCount(term);
-    // _renderResultsCards();
+    renderResultsCards(category, order, resultCards);
   }
 
   // This function will check for NULL values on both descricao and titulo values to avoid match(regex) error
@@ -76,4 +77,5 @@ var searchNews = (function() {
       resultText.textContent = 'Nenhum resultado para ' + '"' + term + '"';
     }
   }
+
 })();
