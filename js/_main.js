@@ -5,6 +5,7 @@ var orderSelected        = document.querySelector('.order-by__select');
 
 var newsArr = []; // Global arr variable to hold the json data cache
 
+// Request JSON returning a promise obj
 function requestData(url, methodType){
   var promise = new Promise(function(resolve, reject){
     var xhr = new XMLHttpRequest();
@@ -29,13 +30,14 @@ function requestData(url, methodType){
 }
 
 function errorHandler(statusCode){
-  alert("Falha no servidor: status " + statusCode +  "\nTente novamente mais tarde.");
+  alert("Falha ao acessar o servidor: status " + statusCode +  "\nTente novamente mais tarde.");
 }
 
 function renderResultsCards(category, order, resultCards) {
   var resultsToShow = [];
   var cardsHTML = '';
 
+  // Filter category
   if (category === 'Todas') {
     resultsToShow = newsArr;
   } else {
@@ -44,15 +46,15 @@ function renderResultsCards(category, order, resultCards) {
       });
   }
 
-  if (resultsToShow.length > 0) {
-    resultsToShow.forEach(function(article) {
-      order === 'old' ?
-        cardsHTML = _getCard(article.imagem, article.titulo, article.descricao, article.hora, article.data) + cardsHTML :
-        cardsHTML += _getCard(article.imagem, article.titulo, article.descricao, article.hora, article.data);
-    });
-    resultCards.innerHTML = cardsHTML;
-  }
+  // Filter by date order(from server)
+  resultsToShow.forEach(function(article) {
+    order === 'old' ?
+      cardsHTML = _getCard(article.imagem, article.titulo, article.descricao, article.hora, article.data) + cardsHTML :
+      cardsHTML += _getCard(article.imagem, article.titulo, article.descricao, article.hora, article.data);
+  });
+  resultCards.innerHTML = cardsHTML; // Render the new HTML content
 
+  // Build news card html
   function _getCard(imgURL, titleText, lideText, hour, day) {
     imgURL = imgURL || '';
     titleText = titleText || '';
