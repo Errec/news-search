@@ -1,5 +1,9 @@
-var newsArr              = []; // Global arr variable to hold the json data cache
+// Cache the DOM
 var resultCards          = document.querySelector('.result-cards__wrapper');
+var categorySelected     = document.querySelector('.search-bar__select');
+var orderSelected        = document.querySelector('.order-by__select');
+
+var newsArr = []; // Global arr variable to hold the json data cache
 
 function requestData(url, methodType){
   var promise = new Promise(function(resolve, reject){

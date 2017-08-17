@@ -2,8 +2,6 @@ var searchNews = (function() {
   // Cache the DOM
   var submitBtn            = document.querySelector('.search-bar__submit-btn');
   var inputForm            = document.querySelector('.search-bar__input-form');
-  var categorySelected     = document.querySelector('.search-bar__select');
-  var orderSelected        = document.querySelector('.order-by__select');
   var categoryOptionNews   = document.querySelector('.search-bar__option-news');
   var categoryOptionPhotos = document.querySelector('.search-bar__option-photos');
   var newsList             = document.querySelector('.result-cards__wrapper');
