@@ -6,6 +6,8 @@ var searchNews = (function() {
   var categoryOptionNews   = document.querySelector('.search-bar__option-news');
   var categoryOptionPhotos = document.querySelector('.search-bar__option-photos');
   var newsList             = document.querySelector('.result-cards__wrapper');
+  var resultText           = document.querySelector('.results-count__text');
+
   // Hosted JSON URL
   var URL = 'https://gist.githubusercontent.com/Errec/ed44de4fdac5916cb45c2ca89f5524af/raw/519a4a3ca8213da9047312a3842a8e23640d6955/news.json';
   // Add the event listeners
@@ -33,7 +35,7 @@ var searchNews = (function() {
   function _renderNewsData(data, term, category) {
     _storeResults(data, term);
     _renderCategorySelector();
-    // _renderResultsCount();
+    _renderResultsCount(term);
     // _renderResultsCards();
   }
 
@@ -62,5 +64,16 @@ var searchNews = (function() {
     });
     categoryOptionNews.textContent = 'Notícias(' + newsCount + ')';
     categoryOptionPhotos.textContent = 'Fotos(' + phothosCount + ')';
+  }
+
+  function _renderResultsCount(term) {
+    resultsCount = newsArr.length;
+    if(resultsCount === 1) {
+      resultText.textContent = '1 resultado para ' + '"' + term + '"';
+    } else if(resultsCount > 1) {
+      resultText.textContent = resultsCount + ' resultados para ' + '"' + term + '"';
+    } else{
+      resultText.textContent = 'Nenhum resultado para ' + '"' + term + '"';
+    }
   }
 })();
