@@ -1,9 +1,11 @@
 var searchNews = (function() {
   // Cache the DOM
-  var submitBtn        = document.querySelector('.search-bar__submit-btn');
-  var inputForm        = document.querySelector('.search-bar__input-form');
-  var categorySelected = document.querySelector('.search-bar__select');
-  var newsList         = document.querySelector('.result-cards__wrapper');
+  var submitBtn            = document.querySelector('.search-bar__submit-btn');
+  var inputForm            = document.querySelector('.search-bar__input-form');
+  var categorySelected     = document.querySelector('.search-bar__select');
+  var categoryOptionNews   = document.querySelector('.search-bar__option-news');
+  var categoryOptionPhotos = document.querySelector('.search-bar__option-photos');
+  var newsList             = document.querySelector('.result-cards__wrapper');
   // Hosted JSON URL
   var URL = 'https://gist.githubusercontent.com/Errec/ed44de4fdac5916cb45c2ca89f5524af/raw/519a4a3ca8213da9047312a3842a8e23640d6955/news.json';
   // Add the event listeners
@@ -30,7 +32,7 @@ var searchNews = (function() {
 
   function _renderNewsData(data, term, category) {
     _storeResults(data, term);
-    // _renderCategorySelector();
+    _renderCategorySelector();
     // _renderResultsCount();
     // _renderResultsCards();
   }
@@ -38,18 +40,27 @@ var searchNews = (function() {
   // This function will check for NULL values on both descricao and titulo values to avoid match(regex) error
   function _storeResults(data, term) {
     var regex = new RegExp(term, 'gi');
-    data.forEach(function(news) {
-      if(!news.titulo) {
-        if(news.descricao && news.descricao.match(regex)) {
-          newsArr.push(news);
+    data.forEach(function(article) {
+      if(!article.titulo) {
+        if(article.descricao && article.descricao.match(regex)) {
+          newsArr.push(article);
         }
-      } else if(!news.descricao) {
-        if(news.titulo && news.titulo.match(regex)) {
-          newsArr.push(news);
+      } else if(!article.descricao) {
+        if(article.titulo && article.titulo.match(regex)) {
+          newsArr.push(article);
         }
-      } else if(news.titulo.match(regex) || news.descricao.match(regex)) {
-        newsArr.push(news);
+      } else if(article.titulo.match(regex) || article.descricao.match(regex)) {
+        newsArr.push(article);
       }
     });
+  }
+
+  function _renderCategorySelector() {
+    var newsCount = 0, phothosCount = 0;
+    newsArr.forEach(function(article) {
+      article.categoria === 'Notícia' ?  newsCount++ : phothosCount++;
+    });
+    categoryOptionNews.textContent = 'Notícias(' + newsCount + ')';
+    categoryOptionPhotos.textContent = 'Fotos(' + phothosCount + ')';
   }
 })();
