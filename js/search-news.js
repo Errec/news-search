@@ -6,11 +6,10 @@ var searchNews = (function() {
   var categoryOptionPhotos = document.querySelector('.search-bar__option-photos');
   var newsList             = document.querySelector('.result-cards__wrapper');
   var resultText           = document.querySelector('.results-count__text');
-
   // Hosted JSON URL
   var URL = 'https://gist.githubusercontent.com/Errec/ed44de4fdac5916cb45c2ca89f5524af/raw/519a4a3ca8213da9047312a3842a8e23640d6955/news.json';
   // Add the event listeners
-  submitBtn.addEventListener('click', function (e) {
+  submitBtn.addEventListener('click', function(e) {
     return _newSearch(e, inputForm.value, categorySelected.value, orderSelected.value);
   });
 
@@ -75,5 +74,4 @@ var searchNews = (function() {
       resultText.textContent = 'Nenhum resultado para ' + '"' + term + '"';
     }
   }
-
 })();
